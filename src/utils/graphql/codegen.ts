@@ -33,13 +33,21 @@ const config: CodegenConfig = {
         // SET TO TRUE IF YOU WANT TO GENERATE USE_QUERY HOOKS
         withHooks: false
       }
-    }
+    },
+    'src/hooks/api': {
+      preset: 'near-operation-file',
+      presetConfig: {
+        extension: '.ts',
+        baseTypesPath: '../../graphql',
+        fileName: 'index',
+      },
+      plugins: ['typescript-operations', 'typescript-react-apollo'],
+    },
   },
   hooks: {
     afterAllFileWrite: [
       'prettier --write "./src/graphql/**.**"',
       'eslint --fix "./src/graphql/**.**"',
-      // HERE WE CAN CALL THE NODE SCRIPT FOR WRITING FILES WITH HOOKS IN A DIFFERENT DIRECTORY
     ]
   }
 };
