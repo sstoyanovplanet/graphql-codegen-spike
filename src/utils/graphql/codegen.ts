@@ -5,7 +5,7 @@ const config: CodegenConfig = {
   overwrite: true,
   schema: import.meta.env.VITE_REACT_GRAPHQL_ENDPOINT,
   // THIS LINE SEARCHES FOR DOCUMENTS AND VALIDATES THEM AGAINST THE API
-  documents: "./src/hooks/api/**/*{.gql.ts,.graphql}",
+  // documents: "./src/hooks/api/**/*{.gql.ts,.graphql}",
   generates: {
     // THIS IS THE EXPORT FILE
     './src/graphql/index.ts': {
@@ -34,15 +34,15 @@ const config: CodegenConfig = {
         withHooks: false
       }
     },
-    'src/hooks/api': {
-      preset: 'near-operation-file',
-      presetConfig: {
-        extension: '.ts',
-        baseTypesPath: '../../graphql',
-        fileName: 'index',
-      },
-      plugins: ['typescript-operations', 'typescript-react-apollo'],
-    },
+    // 'src/hooks/api': {
+    //   preset: 'near-operation-file',
+    //   presetConfig: {
+    //     extension: '.ts',
+    //     baseTypesPath: '../../graphql',
+    //     fileName: 'index',
+    //   },
+    //   plugins: ['typescript-operations', 'typescript-react-apollo'],
+    // },
   },
   hooks: {
     afterAllFileWrite: [
